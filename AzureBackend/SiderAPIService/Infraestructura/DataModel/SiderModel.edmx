@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="siderSQLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Posiciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="50" />
+          <Property Name="Latitud" Type="decimal" Precision="13" Scale="8" />
+          <Property Name="Longitud" Type="decimal" Precision="13" Scale="8" />
+          <Property Name="Velocidad" Type="int" />
+          <Property Name="Via" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdTipo" Type="int" Nullable="false" />
+          <Property Name="idEstado" Type="int" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <Association Name="FK_Posiciones_Estado">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Posiciones" Type="Self.Posiciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Posiciones">
+              <PropertyRef Name="idEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posiciones_ToTipo">
+          <End Role="Tipo" Type="Self.Tipo" Multiplicity="1" />
+          <End Role="Posiciones" Type="Self.Posiciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posiciones">
+              <PropertyRef Name="IdTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GET_DATOS_POSICIONES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pLatitud" Type="decimal" Mode="In" />
+          <Parameter Name="pLongitud" Type="decimal" Mode="In" />
+          <Parameter Name="pDistancia" Type="int" Mode="In" />
+          <Parameter Name="pSegundos" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="siderSQLModelStoreContainer">
+          <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Posiciones" EntityType="Self.Posiciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo" EntityType="Self.Tipo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Posiciones_Estado" Association="Self.FK_Posiciones_Estado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Posiciones" EntitySet="Posiciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posiciones_ToTipo" Association="Self.FK_Posiciones_ToTipo">
+            <End Role="Tipo" EntitySet="Tipo" />
+            <End Role="Posiciones" EntitySet="Posiciones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="siderSQLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Posiciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Latitud" Type="Decimal" Precision="13" Scale="8" />
+          <Property Name="Longitud" Type="Decimal" Precision="13" Scale="8" />
+          <Property Name="Velocidad" Type="Int32" />
+          <Property Name="Via" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdTipo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tipo" Relationship="Self.FK_Posiciones_ToTipo" FromRole="Posiciones" ToRole="Tipo" />
+          <Property Name="idEstado" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Estado" Relationship="siderSQLModel.FK_Posiciones_Estado" FromRole="Posiciones" ToRole="Estado" />
+        </EntityType>
+        <EntityType Name="Tipo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Posiciones" Relationship="Self.FK_Posiciones_ToTipo" FromRole="Tipo" ToRole="Posiciones" />
+        </EntityType>
+        <Association Name="FK_Posiciones_ToTipo">
+          <End Role="Tipo" Type="Self.Tipo" Multiplicity="1" />
+          <End Role="Posiciones" Type="Self.Posiciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posiciones">
+              <PropertyRef Name="IdTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="siderSQLEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Posiciones" EntityType="Self.Posiciones" />
+          <EntitySet Name="Tipo" EntityType="Self.Tipo" />
+          <AssociationSet Name="FK_Posiciones_ToTipo" Association="Self.FK_Posiciones_ToTipo">
+            <End Role="Tipo" EntitySet="Tipo" />
+            <End Role="Posiciones" EntitySet="Posiciones" />
+          </AssociationSet>
+          <EntitySet Name="Estado" EntityType="siderSQLModel.Estado" />
+          <AssociationSet Name="FK_Posiciones_Estado" Association="siderSQLModel.FK_Posiciones_Estado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Posiciones" EntitySet="Posiciones" />
+          </AssociationSet>
+          <FunctionImport Name="GET_DATOS_POSICIONES" ReturnType="Collection(siderSQLModel.GET_DATOS_POSICIONES_Result)">
+            <Parameter Name="pLatitud" Mode="In" Type="Decimal" />
+            <Parameter Name="pLongitud" Mode="In" Type="Decimal" />
+            <Parameter Name="pDistancia" Mode="In" Type="Int32" />
+            <Parameter Name="pSegundos" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estado1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Posiciones" Relationship="siderSQLModel.FK_Posiciones_Estado" FromRole="Estado" ToRole="Posiciones" />
+        </EntityType>
+        <Association Name="FK_Posiciones_Estado">
+          <End Type="siderSQLModel.Estado" Role="Estado" Multiplicity="1" />
+          <End Type="siderSQLModel.Posiciones" Role="Posiciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Posiciones">
+              <PropertyRef Name="idEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GET_DATOS_POSICIONES_Result">
+          <Property Type="String" Name="Tipo" Nullable="true" MaxLength="150" />
+          <Property Type="Decimal" Name="Latitud" Nullable="true" Precision="13" Scale="8" />
+          <Property Type="Decimal" Name="Longitud" Nullable="true" Precision="13" Scale="8" />
+          <Property Type="Int32" Name="Velocidad" Nullable="true" />
+          <Property Type="String" Name="Via" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="DISTANCIA" Nullable="true" />
+          <Property Type="String" Name="Usuario" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="siderSQLModelStoreContainer" CdmEntityContainer="siderSQLEntities">
+          <EntitySetMapping Name="Posiciones">
+            <EntityTypeMapping TypeName="siderSQLModel.Posiciones">
+              <MappingFragment StoreEntitySet="Posiciones">
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+                <ScalarProperty Name="Velocidad" ColumnName="Velocidad" />
+                <ScalarProperty Name="Via" ColumnName="Via" />
+                <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo">
+            <EntityTypeMapping TypeName="siderSQLModel.Tipo">
+              <MappingFragment StoreEntitySet="Tipo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Tipo1" ColumnName="Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estado">
+            <EntityTypeMapping TypeName="siderSQLModel.Estado">
+              <MappingFragment StoreEntitySet="Estado">
+                <ScalarProperty Name="Estado1" ColumnName="Estado" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GET_DATOS_POSICIONES" FunctionName="siderSQLModel.Store.GET_DATOS_POSICIONES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="siderSQLModel.GET_DATOS_POSICIONES_Result">
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+                <ScalarProperty Name="Velocidad" ColumnName="Velocidad" />
+                <ScalarProperty Name="Via" ColumnName="Via" />
+                <ScalarProperty Name="DISTANCIA" ColumnName="DISTANCIA" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

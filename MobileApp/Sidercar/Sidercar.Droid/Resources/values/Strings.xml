@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="MainLatitude">Latitud</string>
+  <string name="MainLongitude">Longitud</string>
+  <string name="MainVelocidad">Velocidad</string>
+  <string name="MainAltitud">Altura</string>
+
+  <string name="TituloNotificacionForeground">Localización activa</string>
+  <string name="MensajeNotificacionForeground">Estás enviando datos {0}</string>
+
+
+  <string name="TituloLayoutMain">Share the road</string>
+  <string name="TituloLayoutVehicle">Share the road (Conductor)</string>
+  <string name="TituloLayoutBicicle">Share the road (Ciclista)</string>
+
+</resources>

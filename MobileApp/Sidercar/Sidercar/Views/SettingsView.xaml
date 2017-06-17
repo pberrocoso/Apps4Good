@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sidercar.Views.SettingsView" BackgroundImage="Home.png">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LabelDetalle" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="16" />
+                <!--<Setter Property="BackgroundColor" Value="Gray" />-->
+            </Style>
+            <Style x:Key="LabelTitulo" TargetType="Label">                
+                <Setter Property="TextColor" Value="White" />                
+                <Setter Property="FontSize" Value="24" />
+            </Style>
+            <Style x:Key="ConfigButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BorderRadius" Value="2"/>
+                <Setter Property="FontSize" Value="28" />
+                <Setter Property="BorderWidth" Value="2" />
+                <Setter Property="BorderColor" Value="Orange" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+
+       
+            
+       
+        <Grid x:Name="controlGrid" RowSpacing="1" ColumnSpacing="1" Margin="10">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+
+                
+                <ColumnDefinition Width="*" />
+
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="0" BackgroundColor="Transparent"  Opacity="1">
+
+                <Label   Text="Puede configurar la distancia de aproximación para los avisos por voz de los posibles riesgos. También puede configurar cuánto tiempo debe permanecer el riesgo en su sitio para que el sistema lo comunique"
+                   Style="{StaticResource LabelDetalle}" />
+            </StackLayout>
+            <!--<Image Grid.Row="0" x:Name="imageCabecera" Source="icon512.png" />-->
+            <Label Grid.Row="2"  Text="Distancia de aproximación" Style="{StaticResource LabelTitulo}" />
+            <Picker Grid.Row="3"  Title="Seleccione un valor" SelectedIndexChanged="PickerDistancia_SelectedIndexChanged" x:Name="pDistancia" TextColor="Orange">
+                <Picker.Items>
+                    <x:String>200</x:String>
+                    <x:String>500</x:String>
+                    <x:String>1000</x:String>                   
+                </Picker.Items>
+            </Picker>
+            <Label Grid.Row="4"  Text="Tiempo en segundos" Style="{StaticResource LabelTitulo}" />
+            <Picker Grid.Row="5"  Title="Seleccione un valor" SelectedIndexChanged="PickerTiempo_SelectedIndexChanged" x:Name="pTiempo" TextColor="Orange">
+                <Picker.Items>
+                    <x:String>2</x:String>
+                    <x:String>4</x:String>
+                    <x:String>6</x:String>                   
+                </Picker.Items>
+            </Picker>
+            <Button  Grid.Row="7" x:Name="ButtonVolver" Text="Volver" Style="{StaticResource ConfigButton}" Clicked="ButtonVolver_Clicked" />
+
+            </Grid>
+      
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sidercar.Views.HomeView" BackgroundImage="Home.png">
+   
+
+    <ContentPage.Resources>
+        <ResourceDictionary> 
+            <!--<Style x:Key="plainButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#eee"/>
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BorderRadius" Value="0"/>
+                <Setter Property="FontSize" Value="40" />
+            </Style>
+            <Style x:Key="darkerButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#ddd"/>
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BorderRadius" Value="0"/>
+                <Setter Property="FontSize" Value="40" />
+            </Style>
+            <Style x:Key="orangeButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#E8AD00"/>
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BorderRadius" Value="0"/>
+                <Setter Property="FontSize" Value="40" />
+            </Style>-->
+            <Style x:Key="ConfigButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BorderRadius" Value="2"/>
+                <Setter Property="FontSize" Value="28" />
+                <Setter Property="BorderWidth" Value="2" />
+                <Setter Property="BorderColor" Value="Orange" />
+            </Style>
+            <Style x:Key="TransparentButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BorderRadius" Value="2"/>
+                <Setter Property="FontSize" Value="35" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="BorderColor" Value="Black" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="MenuItem1" Order="Primary" Icon="Microsoft.png" Text="Item 1" Priority="0" />
+        <ToolbarItem Name="MenuItem2" Order="Primary" Icon="Xamarin.png" Text="Item 2" Priority="1" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+       
+        <Grid x:Name="controlGrid" RowSpacing="1" ColumnSpacing="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30*" />
+                <RowDefinition Height="15" />
+                <RowDefinition Height="15*" />
+                <RowDefinition Height="15" />
+                <RowDefinition Height="15*" />
+                <RowDefinition Height="15" />
+                <RowDefinition Height="15*" />
+                <RowDefinition Height="50*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+              
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Row="0" Grid.ColumnSpan="2" x:Name="imageCabecera" Source="icon512.png" /> 
+            <Button  Grid.Row="2" Grid.ColumnSpan="2"  x:Name="ButtonConductor" Text="Soy Conductor" Style="{StaticResource TransparentButton}" Clicked="ButtonConductor_Clicked" />
+            <Button  Grid.Row="4" Grid.ColumnSpan="2"  x:Name="ButtonCiclista" Text="Soy Ciclista"   Style="{StaticResource TransparentButton}" Clicked="ButtonCiclista_Clicked" />
+            <Button  Grid.Row="6" Grid.ColumnSpan="2"  x:Name="ButtonConfig" Text="Configuración"   Style="{StaticResource ConfigButton}" Clicked="ButtonConfig_Clicked" />
+
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>

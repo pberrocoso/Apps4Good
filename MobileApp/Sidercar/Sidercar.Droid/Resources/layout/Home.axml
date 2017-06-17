@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/home"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <Button
+        android:text="Soy Ciclista"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:layout_gravity="center"
+        android:id="@+id/soyciclista"
+        android:theme="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+        android:textSize="@dimen/abc_text_size_display_1_material"
+        android:textColor="@color/background_floating_material_light" />
+    <Button
+        android:text="Soy Conductor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:layout_gravity="center"
+        android:id="@+id/soyconductor"
+        android:theme="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+        android:textSize="@dimen/abc_text_size_display_1_material"
+        android:textColor="@color/background_floating_material_light" />
+    <ImageButton
+        android:id="@+id/soyciclistabutton"
+        android:layout_width="150dip"
+        android:layout_height="150dip"
+        android:layout_marginTop="20dip"
+        android:layout_marginLeft="20dip"
+        android:padding="100dip"
+        android:src="@drawable/menu_bici"
+        android:background="@color/background_floating_material_light" />
+</LinearLayout>

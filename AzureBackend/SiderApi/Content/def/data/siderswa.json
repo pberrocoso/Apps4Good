@@ -1,0 +1,144 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Sider API",
+        "description": "Enriquece tu apliación de mapas con los riesgos potenciales que puedes encontrar en la carretera"
+    },
+    "paths": {
+        "/api/Cercanos": {
+            "get": {
+                "description": "Obtiene `Posiciones` de elementos de riesgo potencial en la ruta actual.\nRequiere de parámetros obligatorios\n",
+              "parameters": [
+                {
+                  "name": "Latitud",
+                  "in": "query",
+                  "description": "Latitud actual",
+                  "required": true,
+                  "type": "string",
+                  "format": "double"
+                },
+                {
+                  "name": "Longitud",
+                  "in": "query",
+                  "description": "Longitud actual",
+                  "required": true,
+                  "type": "string",
+                  "format": "double"
+                },
+                {
+                  "name": "metros",
+                  "in": "query",
+                  "description": "Metros de distancia al elemento",
+                  "required": true,
+                  "type": "string",
+                  "format": "double"
+                },
+                {
+                  "name": "tiempo",
+                  "in": "query",
+                  "description": "Tiempo en segundos, que desea visualizar el elemento en su última posición",
+                  "required": true,
+                  "type": "string",
+                  "format": "double"
+                }
+              ],
+                "tags": [
+                    "Cercanos"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "ArrayOfElementos",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Elemento"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Position": {
+            "post": {
+                "description": "Inserta una `Posición` de un elemento de riesgo potencial en la ruta que se encuentra.\n",
+                "parameters": [
+                    {
+                        "name": "Posicion",
+                        "in": "body",
+                        "description": "Información sobre la posición geográfica del elemento",
+                        "schema": {
+                            "$ref": "#/definitions/Position"
+                        },
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Position"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Inserta una nueva petición"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Elemento": {
+            "type": "object",
+            "properties": {
+                "Tipo": {
+                    "type": "string",
+                    "description": "Tipo de elemento (Ciclista, Peaton, Otros)."
+                },
+                "Via": {
+                    "type": "string",
+                    "description": "Carretera en la que se encuentra el elemento."
+                },
+                "Latitud": {
+                    "type": "string",
+                    "description": "Latitud del elemento."
+                },
+                "Longitud": {
+                    "type": "string",
+                    "description": "Longitud del elemento."
+                },
+                "Distancia": {
+                    "type": "string",
+                    "description": "Distancia expresada en metros a la que se encuentra el elemento."
+                },
+                "Velocidad": {
+                    "type": "string",
+                    "description": "Velocidad en Km/h."
+                }
+            }
+        },
+        "Position": {
+            "type": "object",
+            "properties": {
+                "idTipo": {
+                    "type": "string",
+                    "description": "Tipo de elemento (Ciclista, Peaton, Otros)."
+                },
+                "Latitud": {
+                    "type": "string",
+                    "description": "Latitud del elemento."
+                },
+                "Longitud": {
+                    "type": "string",
+                    "description": "Longitud del elemento."
+                },
+                "Velocidad": {
+                    "type": "string",
+                    "description": "Velocidad en Km/h."
+                },
+                "Identificador": {
+                    "type": "string",
+                    "description": "Identificador único del elemento"
+                }
+            }
+        }
+    }
+}
