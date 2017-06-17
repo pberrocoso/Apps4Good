@@ -10,7 +10,3 @@ La aplicación está diseñada para adoptar tanto el rol del ciclista, enviando 
 
 
 
-
-
-
-![](https://preview.ibb.co/nK8h2a/Pantalla_Home.png)
