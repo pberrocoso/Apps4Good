@@ -1,7 +1,6 @@
-# Apps4Good
-## Aplicación concurso Apps4Good de Microsoft
+# Aplicación concurso Apps4Good de Microsoft
 
-### El proyecto se denomina: Share the Road
+El proyecto se denomina: **Share the Road**
 
 Desde hace ya varios años, venimos viendo en los medios de comunicación los accidentes de tráfico en los que desgraciadamente se ven involucrados ciclistas.
 
