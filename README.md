@@ -51,7 +51,7 @@ La pantalla de configuración permite modificar los valores de "Tiempo": el tiem
 
 Los datos de la configuración se almacenan con sqlLite en el teléfono del usuario.
 
-**Básicamente esta es la descripción de la aplicación. Creo que cumple una buena labor "social" para tratar de impedir accidentes de tráfico con ciclistas o cualquier otro elemento de riesgo que podamos encontrarnos en la carretera.**
+**Básicamente esta es la descripción de la aplicación. Creo que cumple una buena labor social para tratar de impedir accidentes de tráfico con ciclistas o cualquier otro elemento de riesgo que podamos encontrarnos en la carretera.**
 
 **Espero que guste y que se valore la arquitectura distribuída que se ha utilizado para conectar la aplicación con los servicios de Azure. **
 
