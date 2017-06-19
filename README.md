@@ -41,7 +41,7 @@ Esta pantalla envía los datos al WebAPI de azure y se grabarán en BBDD. Se usa
 
 ![](https://image.ibb.co/mobXdQ/Pantalla_Vehiculo.png)
 
-El conductor se conecta al WebAPI para enviar su posición y consultar si hay ciclistas cerca en su ruta. La ruta se obtiene **conectando con los servicios de google maps** que convierte coordenadas en direcciones. Si existen ciclistas se pintan en el mapa y se realiza una locución de voz advirtiendo del riesgo.
+El conductor se conecta al WebAPI para enviar su posición y consultar si hay ciclistas cerca en su ruta. La denominación de la vía se obtiene **conectando con los servicios de google maps** que convierte coordenadas en direcciones. Si existen ciclistas se pintan en el mapa y se realiza una locución de voz advirtiendo del riesgo.
 
 **Pantalla de configuración**
 
@@ -53,7 +53,7 @@ Los datos de la configuración se almacenan con sqlLite en el teléfono del usua
 
 **Básicamente esta es la descripción de la aplicación. Creo que cumple una buena labor social para tratar de impedir accidentes de tráfico con ciclistas o cualquier otro elemento de riesgo que podamos encontrarnos en la carretera.**
 
-**Espero que guste y que se valore la arquitectura distribuída que se ha utilizado para conectar la aplicación con los servicios de Azure. **
+**Espero que guste y que se valore la arquitectura distribuída que se ha utilizado para conectar la aplicación con los servicios de Azure.**
 
 **Para cualquier aclaración, por favor no dudéis en poneros en contacto conmigo a través de mi email: pedro.berrocoso@gmail.com**
 
