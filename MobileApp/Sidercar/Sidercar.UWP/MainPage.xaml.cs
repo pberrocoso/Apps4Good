@@ -20,7 +20,7 @@ namespace Sidercar.UWP
         public MainPage()
         {
             this.InitializeComponent();
-            Xamarin.FormsMaps.Init("22wqUiekHrMcGVD5gnOG~rGfo7oHId1_QqE0tgSeqEA~ApkKrArqOBsH1RO0zJH8-4lUY9GPyb8kukrVnuoNq6qlJIdZ2h43_YepRypx4WBJ");
+            Xamarin.FormsMaps.Init("XXXXXX~XXXXXXXXXXXXXXXXXXX~SSDDEEE-XXXXXXX");
             LoadApplication(new Sidercar.App());
         }
     }

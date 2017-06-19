@@ -9,6 +9,6 @@
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<application android:label="Share the Road">
-		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyCBiUtcahgL_ugrBcy6PjT9RsBnrTQzK2k" />
+		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="XXXXXXX" />
 	</application>
 </manifest>
